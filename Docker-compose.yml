@@ -1,0 +1,33 @@
+version: '3.9'
+services: 
+  backend-exercicio-docker: 
+    image: exercicio-docker:latest
+    restart: always
+    volumes:
+      - C:\Users\Zappts\Desktop\taming UseEffect\docker\public:/app/public
+    ports: 
+      - 3000:3000
+
+  mysql: 
+    image: mysql:8
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 3001:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=senhaDoCartao
+    volumes:
+      - varAmbiente:/var/lib/mysql
+  
+  mysql2: 
+    image: mysql:8
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 3002:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=senhaDoCartao
+    volumes:
+      - varAmbiente:/var/lib/mysql
+volumes:
+  varAmbiente
